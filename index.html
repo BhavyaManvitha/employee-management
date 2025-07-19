@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+  <div class="left-section">
+    <span class="menu-toggle">📋</span>
+
+    <div class="search-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <input type="text" placeholder="Search employees, departments..." />
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="notification-icon">
+      🔔
+      <span class="notif-dot"></span>
+    </div>
+    <span class="user-icon">👤</span>
+  </div>
+</header>
+
+
+  <nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="profile-icon">👤</div>
+    <div class="portal-info">
+      <h2>HR Portal</h2>
+      <p style ="word-wrap: break-word;">Employee Management</p>
+    </div>
+  </div>
+
+  <p class="nav-title">Main Navigation</p>
+  <ul class="nav-links">
+  <li><a href="index.html">Dashboard <span class="arrow">›</span></a></li>
+  <li><a href="employee.html">Employees <span class="arrow">›</span></a></li>
+  <li><a href="payrolls.html">Payroll <span class="arrow">›</span></a></li>
+  <li><a href="leaves.html">Leave Management <span class="arrow">›</span></a></li>
+  <li><a href="department.html">Departments <span class="arrow">›</span></a></li>
+  <li><a href="settings.html">Settings <span class="arrow">›</span></a></li>
+</ul>
+</nav>
+
+
+  <main class="main-content">
+    <h1> Welcome Back, Rudra</h1>
+    <p> Here's what's happening with your team today.</p>
+  <section class="cards">
+    <div class="card">
+      <div class="card-icon icon-bg-blue">
+       
+        <span>👥</span>
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">Total Employees</h2>
+        <p class="card-value">248</p>
+        <p class="card-subtext">+12 this month</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-bg-orange">
+        <span>⏰</span>
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">Pending Requests</h2>
+        <p class="card-value">23</p>
+        <p class="card-subtext">8 leave requests</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-bg-green">
+        <span>$</span>
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">Monthly Payroll</h2>
+        <p class="card-value">$524,800</p>
+        <p class="card-subtext">+3.2% from last month</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-bg-purple">
+        <span>📈</span>
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">Active Projects</h2>
+        <p class="card-value">16</p>
+        <p class="card-subtext">3 completed this week</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid">
+  <!-- Quick Actions -->
+  <div class="quick-actions card-shadow">
+    <h2 class="section-title">🔹 Quick Actions</h2>
+    <div class="actions-grid">
+  <a href="employee.html" class="action-card peach" id="quickAddEmployee">
+    <span class="icon">👤</span>
+    <div>
+      <h3>Add New Employee</h3>
+      <p>Register a new team member</p>
+    </div>
+  </a>
+  <a href="payrolls.html" class="action-card blue" id="quickProcessPayroll">
+    <span class="icon">$</span>
+    <div>
+      <h3>Process Payroll</h3>
+      <p>Review and approve monthly payroll</p>
+    </div>
+  </a>
+  <a href="#" class="action-card blue" id="quickViewReports">
+    <span class="icon">📄</span>
+    <div>
+      <h3>View Reports</h3>
+      <p>Generate HR analytics reports</p>
+    </div>
+  </a>
+  <a href="leaves.html" class="action-card mint" id="quickManageLeave">
+    <span class="icon">📅</span>
+    <div>
+      <h3>Manage Leave</h3>
+      <p>Review leave requests and approvals</p>
+    </div>
+  </a>
+</div>
+  </div>
+
+  <!-- Recent Activities -->
+  <div class="recent-activities card-shadow">
+    <h2 class="section-title">🕒 Recent Activities</h2>
+    <ul class="activity-list">
+      <li><span class="dot blue-dot"></span> Sarah Chen submitted leave <span class="tag leave">leave</span><p>2 hours ago</p></li>
+      <li><span class="dot blue-dot"></span> Monthly payroll processed <span class="tag payroll">payroll</span><p>4 hours ago</p></li>
+      <li><span class="dot blue-dot"></span> New employee John added <span class="tag employee">employee</span><p>1 day ago</p></li>
+      <li><span class="dot blue-dot"></span> Department meeting held <span class="tag meeting">meeting</span><p>2 days ago</p></li>
+    </ul>
+  </div>
+</section>
+  <section class="department-overview card-shadow">
+  <h2 class="section-title">🏢 Department Overview</h2>
+  <div class="department-grid">
+    <div class="department-card">
+      <h3>Engineering</h3>
+      <p class="employee-count">84</p>
+      <p class="employee-label">employees</p>
+    </div>
+    <div class="department-card">
+      <h3>Marketing</h3>
+      <p class="employee-count">32</p>
+      <p class="employee-label">employees</p>
+    </div>
+    <div class="department-card">
+      <h3>Operations</h3>
+      <p class="employee-count">28</p>
+      <p class="employee-label">employees</p>
+    </div>
+  </div>
+</section>
+
+  
+</main>
+
+</body>
+</html>

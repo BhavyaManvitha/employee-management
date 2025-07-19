@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employees</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="left-section">
+      <span class="menu-toggle">📋</span>
+      <div class="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        <input type="text" placeholder="Search employees..." />
+      </div>
+    </div>
+    <div class="right-section">
+      <div class="notification-icon">🔔<span class="notif-dot"></span></div>
+      <span class="user-icon">👤</span>
+    </div>
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-icon">👤</div>
+      <div class="portal-info">
+        <h2>HR Portal</h2>
+        <p>Employee Management</p>
+      </div>
+    </div>
+    <p class="nav-title">Main Navigation</p>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard <span class="arrow">›</span></a></li>
+      <li><a href="employee.html">Employees <span class="arrow">›</span></a></li>
+      <li><a href="payrolls.html">Payroll <span class="arrow">›</span></a></li>
+      <li><a href="leaves.html">Leave Management <span class="arrow">›</span></a></li>
+      <li><a href="department.html">Departments <span class="arrow">›</span></a></li>
+      <li><a href="settings.html">Settings <span class="arrow">›</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="employee-header">
+  <div class="header-left">
+    <h1>Employee Directory</h1>
+    <p>Explore your team members here.</p>
+  </div>
+  <button class="add-button">
+    <i class="fa-solid fa-money-bill-wave"></i> Add Employee
+  </button>
+</div>
+
+      <div class="employee-controls">
+    <div class="search-filter">
+      <div class="search-box">
+        🔍
+        <input type="text" placeholder="Search employees..." />
+      </div>
+
+      <select class="department-filter">
+        <option>All Departments</option>
+        <option>Engineering</option>
+        <option>Product</option>
+        <option>Design</option>
+        <option>HR</option>
+      </select>
+
+      <button class="filter-icon">⚙️</button>
+    </div>
+  </div>
+
+
+  <div id="addEmployeeFormCard" class="app-form-card" style="display: none;">
+  <div class="card-header">
+    <h2>Add New Employee</h2>
+    <button type="button" class="close-button">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <form id="addEmployeeFormContent">
+    <div class="form-group">
+      <label for="employeeName">Name:</label>
+      <input type="text" id="employeeName" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="employeeEmail">Email:</label>
+      <input type="email" id="employeeEmail" name="email" placeholder="e.g. email@example.com" required>
+    </div>
+    <div class="form-group">
+      <label for="employeePhone">Phone:</label>
+      <input type="tel" id="employeePhone" name="phone" pattern="[0-9]{10}" placeholder="e.g. 9876543210" title="Phone number must be 10 digits" required>
+    </div>
+    <div class="form-group">
+      <label for="employeeDepartment">Department:</label>
+      <div class="select-wrapper">
+        <select id="employeeDepartment" name="department_id" required>
+          <option value="">Select Department</option>
+          <option value="1">Engineering</option>
+          <option value="2">Marketing</option>
+          <option value="3">Human Resources</option>
+          <option value="4">Finance</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="employeeDesignation">Designation:</label>
+      <input type="text" id="employeeDesignation" name="designation" required>
+    </div>
+    <div class="form-group">
+      <label for="employeeJoinDate">Join Date:</label>
+      <div class="date-input-wrapper">
+        <input type="date" id="employeeJoinDate" name="join_date" placeholder="dd-mm-yyyy" required>
+        <span class="calendar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="employeeSalary">Salary:</label>
+      <input type="number" id="employeeSalary" name="salary" min="0" step="0.01" required>
+    </div>
+    <div class="button-group">
+      <button type="submit" class="action-button primary">
+        Add Employee
+      </button>
+      <button type="button" class="action-button secondary">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
+    <div class="employee-table-container">
+  <table class="data-table" id="employeeTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Join Date</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-id="1">
+        <td>1</td>
+        <td>Priya Sharma</td>
+        <td>priya.s@example.com</td>
+        <td>+91 9876543210</td>
+        <td>Product</td>
+        <td>UI/UX Designer</td>
+        <td>2023-01-15</td>
+        <td>₹60,000</td>
+        <td class="table-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </td>
+      </tr>
+      <tr data-id="2">
+        <td>2</td>
+        <td>Rahul Mehta</td>
+        <td>rahul.m@example.com</td>
+        <td>+91 9876512345</td>
+        <td>Engineering</td>
+        <td>Backend Developer</td>
+        <td>2022-06-20</td>
+        <td>₹75,000</td>
+        <td class="table-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </td>
+      </tr>
+      <tr data-id="3">
+        <td>3</td>
+        <td>Ankit Verma</td>
+        <td>ankit.v@example.com</td>
+        <td>+91 9988766554</td>
+        <td>Human Resources</td>
+        <td>HR Executive</td>
+        <td>2021-03-01</td>
+        <td>₹50,000</td>
+        <td class="table-actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+  </main>
+<script src="employee.js"></script>
+</body>
+</html>

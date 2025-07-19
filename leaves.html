@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+  <div class="left-section">
+    <span class="menu-toggle">📋</span>
+
+    <div class="search-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <input type="text" placeholder="Search employees, departments..." />
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="notification-icon">
+      🔔
+      <span class="notif-dot"></span>
+    </div>
+    <span class="user-icon">👤</span>
+  </div>
+</header>
+
+
+  <nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="profile-icon">👤</div>
+    <div class="portal-info">
+      <h2>HR Portal</h2>
+      <p>Employee Management</p>
+    </div>
+  </div>
+
+  <p class="nav-title">Main Navigation</p>
+  <ul class="nav-links">
+  <li><a href="index.html">Dashboard <span class="arrow">›</span></a></li>
+  <li><a href="employee.html">Employees <span class="arrow">›</span></a></li>
+  <li><a href="payrolls.html">Payroll <span class="arrow">›</span></a></li>
+  <li><a href="leaves.html">Leave Management <span class="arrow">›</span></a></li>
+  <li><a href="department.html">Departments <span class="arrow">›</span></a></li>
+  <li><a href="settings.html">Settings <span class="arrow">›</span></a></li>
+</ul>
+</nav>
+
+
+  <main class="main-content">
+  <div class="page-header">
+  <div>
+    <h1>Leave Management</h1>
+    <p>Track employee leave requests and approvals</p>
+  </div>
+  <button class="add-button" id="manageLeavesBtn">
+  <i class="fa-solid fa-calendar-plus"></i> Manage Leaves
+</button>
+</div>
+
+
+
+<div class="filters">
+  <input type="text" placeholder="Search by employee name..." />
+  <select>
+    <option>All Status</option>
+    <option>Approved</option>
+    <option>Pending</option>
+    <option>Rejected</option>
+  </select>
+  <select>
+    <option>All Departments</option>
+    <option>HR</option>
+    <option>Tech</option>
+    <option>Operations</option>
+  </select>
+</div>
+
+
+<div id="manageLeaveCard" class="app-form-card" style="display: none;">
+  <div class="card-header">
+    <h2>Manage Leave Request</h2>
+    <button type="button" class="close-button">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="form-content-display">
+    <div class="display-group">
+      <label>Employee ID:</label>
+      <p id="displayEmployeeId">EMP001</p>
+    </div>
+    <div class="display-group">
+      <label>Leave Type:</label>
+      <p id="displayLeaveType">Sick Leave</p>
+    </div>
+    <div class="display-group">
+      <label>Start Date:</label>
+      <p id="displayStartDate">2025-07-20</p>
+    </div>
+    <div class="display-group">
+      <label>End Date:</label>
+      <p id="displayEndDate">2025-07-22</p>
+    </div>
+    <div class="display-group">
+      <label>Status:</label>
+      <div id="displayStatusContainer" class="status-display-container">
+        <span id="currentStatusBadge" class="status pending">Pending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-group leave-actions-group">
+    <button type="button" class="action-button primary accept-button">Accept</button>
+    <button type="button" class="action-button secondary reject-button">Reject</button>
+    <p id="statusMessage" class="status-message" style="display: none;"></p>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="leave-table-container">
+  <table class="data-table" id="leaveTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Leave Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-id="1">
+        <td>1</td>
+        <td>101</td>
+        <td>Sick Leave</td>
+        <td>2025-07-10</td>
+        <td>2025-07-12</td>
+        <td><span class="status approved">Approved</span></td>
+        
+      </tr>
+      <tr data-id="2">
+        <td>2</td>
+        <td>102</td>
+        <td>Casual Leave</td>
+        <td>2025-07-15</td>
+        <td>2025-07-17</td>
+        <td><span class="status pending">Pending</span></td>
+        
+      </tr>
+      <tr data-id="3">
+        <td>3</td>
+        <td>103</td>
+        <td>Vacation</td>
+        <td>2025-08-01</td>
+        <td>2025-08-05</td>
+        <td><span class="status approved">Approved</span></td>
+        
+      </tr>
+      <tr data-id="4">
+        <td>4</td>
+        <td>104</td>
+        <td>Paternity Leave</td>
+        <td>2025-09-01</td>
+        <td>2025-09-15</td>
+        <td><span class="status pending">Pending</span></td>
+       
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  
+</main>
+ <script src="leaves_manage.js"></script>
+</body>
+</html>

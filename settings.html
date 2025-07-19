@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+  <div class="left-section">
+    <span class="menu-toggle">📋</span>
+
+    <div class="search-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+      <input type="text" placeholder="Search employees, departments..." />
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="notification-icon">
+      🔔
+      <span class="notif-dot"></span>
+    </div>
+    <span class="user-icon">👤</span>
+  </div>
+</header>
+
+
+  <nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="profile-icon">👤</div>
+    <div class="portal-info">
+      <h2>HR Portal</h2>
+      <p>Employee Management</p>
+    </div>
+  </div>
+
+  <p class="nav-title">Main Navigation</p>
+  <ul class="nav-links">
+  <li><a href="index.html">Dashboard <span class="arrow">›</span></a></li>
+  <li><a href="employee.html">Employees <span class="arrow">›</span></a></li>
+  <li><a href="payrolls.html">Payroll <span class="arrow">›</span></a></li>
+  <li><a href="leaves.html">Leave Management <span class="arrow">›</span></a></li>
+  <li><a href="department.html">Departments <span class="arrow">›</span></a></li>
+  <li><a href="settings.html">Settings <span class="arrow">›</span></a></li>
+</ul>
+</nav>
+
+
+  <main class="main-content">
+    <div class="page-header">
+  <div>
+    <h1>Settings</h1>
+    <p>Manage your profile, preferences, and notification settings</p>
+  </div>
+</div>
+
+<div class="settings-grid">
+  <div class="settings-card">
+    <h2>👤 My Admin Profile</h2>
+    <label>Full Name</label>
+    <input type="text" value="Portal Administrator" />
+
+    <label>Email</label>
+    <input type="email" value="admin@hrportal.com" />
+
+    <label>Role</label>
+    <input type="text" value="HR Manager" disabled /> <button class="save-btn">Save Profile</button>
+  </div>
+  
+
+  <div class="settings-card">
+    <h2>💰 Payroll Settings</h2>
+    <label>Default Pay Frequency</label>
+    <select>
+      <option>Monthly</option>
+      <option>Bi-Weekly</option>
+      <option>Weekly</option>
+    </select>
+
+    <label>Default Tax Rate (%)</label>
+    <input type="number" value="15.0" min="0" max="100" step="0.1" />
+
+    <label>Automatic Direct Deposit</label>
+    <input type="checkbox" checked />
+
+    <button class="save-btn">Save Payroll Settings</button>
+  </div>
+
+  <div class="settings-card">
+    <h2>📅 Leave Management Settings</h2>
+    <label>Max Annual Leave Days</label>
+    <input type="number" value="20" min="0" />
+
+    <label>Max Sick Leave Days</label>
+    <input type="number" value="10" min="0" />
+
+    <label>Approval Workflow Enabled</label>
+    <input type="checkbox" checked />
+
+    <button class="save-btn">Save Leave Settings</button>
+  </div>
+</div>
+
+  
+</main>
+
+</body>
+</html>
