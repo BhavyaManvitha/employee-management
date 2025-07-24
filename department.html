@@ -68,6 +68,42 @@
   </select>
 </div>
 
+<!-- Add New Department Form Card -->
+<div id="addDepartmentFormCard" class="app-form-card" style="display: none;">
+  <div class="card-header">
+    <h2>Add New Department</h2>
+    <button type="button" class="close-button">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <form id="addDepartmentFormContent">
+    <div class="form-group">
+      <label for="departmentName">Department Name:</label>
+      <input type="text" id="departmentName" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="departmentHeadId">Head Employee ID (Optional):</label>
+      <input type="number" id="departmentHeadId" name="head_id" placeholder="e.g., 101">
+    </div>
+    <div class="form-group">
+      <label for="departmentTeamSize">Team Size:</label>
+      <input type="number" id="departmentTeamSize" name="team_size" min="0" required>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="action-button primary">
+        Add Department
+      </button>
+      <button type="button" class="action-button secondary">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
+
 <div class="department-table-container">
   <table class="data-table" id="departmentTable">
     <thead>
@@ -115,6 +151,6 @@
 
   
 </main>
-
+<script src="departments.js"></script>
 </body>
 </html>

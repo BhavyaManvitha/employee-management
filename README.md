@@ -1,113 +1,112 @@
-Employee Management Application:
-The Employee Management Application is a modern, web-based solution designed to streamline and simplify core HR functions. It provides a centralized system for managing employee records, processing payroll, tracking leave requests, and handling department information. This platform aims to improve efficiency and reduce administrative overhead for small to mid-sized organizations that may currently rely on outdated manual methods.
+**Employee Management Application**
 
-Features
-Frontend (User Interface)
-Comprehensive Dashboard: An overview page (index.html) with quick actions for key HR tasks.
+---
 
-Employee Management:
+### **Project Description**
 
-Displays employee records in a clean, tabular format.
+The Employee Management Application is a modern, web-based solution designed to streamline and simplify core HR functions. It provides a centralized system for managing employee records, processing payroll, tracking leave requests, and handling department information. This platform improves efficiency and reduces administrative overhead for small to mid-sized organizations that may rely on outdated manual methods.
 
-"Add New Employee" form implemented as a compact, styled card that appears within the main content area.
+---
 
-Form fields align with the database schema, including Name, Email, Phone, Department, Designation, Join Date, and Salary.
+### **Features**
 
-Payroll Management:
+#### **Frontend (User Interface)**
 
-Displays payroll records in a clear table format.
+- **Comprehensive Dashboard**: Overview page (index.html) with quick actions for key HR tasks.
 
-"Add New Payroll" form implemented with the same compact card styling, including fields for Employee ID, Base Salary, Allowance, Deductions, Net Salary, and Pay Date.
+- **Employee Management**:
 
-Leave Management:
+  - Displays employee records in a tabular format.
+  - "Add New Employee" form appears as a compact, styled card.
+  - Fields: Name, Email, Phone, Department, Designation, Join Date, Salary.
 
-Displays leave requests in a table format.
+- **Payroll Management**:
 
-"Manage Leave Request" card to view details of a specific leave, dynamically showing "Accept/Reject" buttons for pending requests or a status message for approved/rejected ones.
+  - Table format for payroll records.
+  - "Add New Payroll" form with fields: Employee ID, Base Salary, Allowance, Deductions, Net Salary, Pay Date.
 
-Department Management: Displays department records in a table format.
+- **Leave Management**:
 
-HR-Relevant Settings: A dedicated settings page (settings.html) for administrative configurations pertinent to the HR portal's functionality (e.g., payroll rules, leave policies).
+  - Table view for leave requests.
+  - "Manage Leave Request" card with dynamic Accept/Reject buttons.
 
-Consistent & Modern UI/UX:
+- **Department Management**: Department records in tabular format.
 
-Uses a clean, modern design with a consistent color palette and typography (Poppins font).
+- **HR-Relevant Settings**: settings.html for admin configurations like payroll rules and leave policies.
 
-All tables, forms, and cards share a unified visual style.
+- **Consistent & Modern UI/UX**:
 
-"Add" action buttons are consistently styled across pages.
+  - Modern design with Poppins font.
+  - Unified style across tables, forms, and cards.
+  - Consistent "Add" buttons styling.
 
-Backend (API & Database Interaction)
-Node.js & Express.js: Robust server-side application framework.
+---
 
-MySQL Database: Used for secure and structured data storage.
+### **Backend (API & Database Interaction)**
 
-Comprehensive RESTful API: Provides full CRUD (Create, Read, Update, Delete) operations for all core entities:
+- **Node.js & Express.js**: Server-side framework.
+- **MySQL Database**: Secure, structured data storage.
+- **RESTful API**:
+  - CRUD operations for: Employees, Payrolls, Departments, Leave Requests.
+  - Schema aligned with `db_schema.png`.
 
-Employees (/api/employees)
+---
 
-Payrolls (/api/payrolls)
+### **Technologies Used**
 
-Departments (/api/departments)
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla JS)
+- **Backend**: Node.js, Express.js
+- **Database**: MySQL (via mysql2 Node.js driver)
+- **Tools**: Postman, MySQL Workbench
+- **Icons**: Font Awesome
 
-Leave Requests (/api/leaves)
+---
 
-Schema Alignment: Backend API endpoints are precisely aligned with the predefined database schema (db_schema.png) for consistent data handling.
+### **Project Setup Instructions**
 
-Technologies Used
-Frontend: HTML5, CSS3, JavaScript (Vanilla JS for interactivity)
+#### **Prerequisites**
 
-Backend: Node.js, Express.js
+- Node.js (v18.x or later)
+- npm
+- MySQL Server (v8.x or later)
+- MySQL Workbench
 
-Database: MySQL (via mysql2 Node.js driver)
+#### **1. Clone the Repository**
 
-Tools: Postman (for API testing), MySQL Workbench (for database management)
-
-Icons: Font Awesome (for various UI icons)
-
-Project Setup Instructions
-Prerequisites
-Node.js (v18.x or later recommended)
-
-npm (Node Package Manager, comes with Node.js)
-
-MySQL Server (v8.x or later recommended)
-
-MySQL Workbench (or any MySQL client)
-
-1. Clone the Repository
+```bash
 git clone <your-repository-url>
 cd employee-management
+```
 
-(Assuming your project is in an 'employee-management' folder and the hr-backend folder is inside it.)
+#### **2. Install Backend Dependencies**
 
-2. Install Backend Dependencies
-Navigate into the hr-backend directory and install the necessary Node.js packages.
-
+```bash
 cd hr-backend
 npm install express mysql2 cors
+```
 
-3. Database Setup (MySQL)
-Open MySQL Workbench and connect to your MySQL server.
+#### **3. Database Setup (MySQL)**
 
-a. Create the Database:
+**a. Create Database:**
 
+```sql
 CREATE DATABASE hr_portal;
 USE hr_portal;
+```
 
-b. Drop Existing Tables (if any, for a clean start):
+**b. Drop Existing Tables (if any):**
 
-USE hr_portal;
+```sql
 DROP TABLE IF EXISTS payrolls;
 DROP TABLE IF EXISTS leave_requests;
 DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS departments;
+```
 
-c. Create New Tables (aligned with db_schema.png):
+**c. Create Tables (as per db\_schema.png):**
 
-USE hr_portal;
-
--- 1. Create Departments table
+```sql
+-- Departments
 CREATE TABLE departments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -115,7 +114,7 @@ CREATE TABLE departments (
     team_size INT
 );
 
--- 2. Create Employees table
+-- Employees
 CREATE TABLE employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -128,12 +127,12 @@ CREATE TABLE employees (
     FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE SET NULL
 );
 
--- 3. Add head_id Foreign Key to Departments table
+-- Add foreign key to Departments
 ALTER TABLE departments
 ADD CONSTRAINT fk_head_id
 FOREIGN KEY (head_id) REFERENCES employees(id) ON DELETE SET NULL;
 
--- 4. Create Leave Requests table
+-- Leave Requests
 CREATE TABLE leave_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
     employee_id INT NOT NULL,
@@ -144,7 +143,7 @@ CREATE TABLE leave_requests (
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
--- 5. Create Payrolls table
+-- Payrolls
 CREATE TABLE payrolls (
     id INT AUTO_INCREMENT PRIMARY KEY,
     employee_id INT NOT NULL,
@@ -155,83 +154,87 @@ CREATE TABLE payrolls (
     pay_date DATE NOT NULL,
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
+```
 
-4. Configure Database Connection
-Ensure your hr-backend/index.js file has the correct MySQL connection details:
+#### **4. Configure Database Connection**
 
+Update `hr-backend/index.js`:
+
+```js
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'root', // Your MySQL username
-    password: 'Bhavya@18', // Your MySQL password
-    database: 'hr_portal' 
+    user: 'root',
+    password: 'Bhavya@18',
+    database: 'hr_portal'
 });
+```
 
-5. Start the Backend Server
-From the hr-backend directory, run:
+#### **5. Start the Backend Server**
 
+```bash
 node index.js
+```
 
-You should see Connected to MySQL Database! and Server running on http://localhost:3000.
+Expected Output:
 
-6. Access the Frontend
-Open your index.html file in a web browser.
+```
+Connected to MySQL Database!
+Server running on http://localhost:3000
+```
 
-API Endpoints (for Postman Testing)
-The backend server exposes the following RESTful API endpoints at http://localhost:3000/api/:
+#### **6. Access the Frontend**
 
-Employees
-GET /api/employees: Get all employees.
+Open `index.html` in a browser.
 
-GET /api/employees/:id: Get employee by ID.
+---
 
-POST /api/employees: Add a new employee.
+### **API Endpoints (**[**http://localhost:3000/api/**](http://localhost:3000/api/)**)**
 
-Body (JSON):
+#### **Employees**
 
+- `GET /api/employees`
+- `GET /api/employees/:id`
+- `POST /api/employees`
+
+```json
 {
     "name": "John Doe",
     "email": "john.doe@example.com",
     "phone": "1234567890",
-    "department_id": 1, 
+    "department_id": 1,
     "designation": "Software Engineer",
     "join_date": "2024-01-01",
     "salary": 80000.00
 }
+```
 
-PUT /api/employees/:id: Update an employee.
+- `PUT /api/employees/:id`
+- `DELETE /api/employees/:id`
 
-Body (JSON): (Full object with updated fields)
+#### **Departments**
 
-DELETE /api/employees/:id: Delete an employee.
+- `GET /api/departments`
+- `GET /api/departments/:id`
+- `POST /api/departments`
 
-Departments
-GET /api/departments: Get all departments.
-
-GET /api/departments/:id: Get department by ID.
-
-POST /api/departments: Add a new department.
-
-Body (JSON):
-
+```json
 {
     "name": "Engineering",
     "head_id": null,
     "team_size": 20
 }
+```
 
-PUT /api/departments/:id: Update a department.
+- `PUT /api/departments/:id`
+- `DELETE /api/departments/:id`
 
-DELETE /api/departments/:id: Delete a department.
+#### **Payrolls**
 
-Payrolls
-GET /api/payrolls: Get all payroll entries.
+- `GET /api/payrolls`
+- `GET /api/payrolls/:employee_id`
+- `POST /api/payrolls`
 
-GET /api/payrolls/:employee_id: Get payroll for a specific employee.
-
-POST /api/payrolls: Add a new payroll entry.
-
-Body (JSON):
-
+```json
 {
     "employee_id": 1,
     "base_salary": 60000.00,
@@ -240,20 +243,18 @@ Body (JSON):
     "net_salary": 63000.00,
     "pay_date": "2024-07-25"
 }
+```
 
-PUT /api/payrolls/:id: Update a payroll entry.
+- `PUT /api/payrolls/:id`
+- `DELETE /api/payrolls/:id`
 
-DELETE /api/payrolls/:id: Delete a payroll entry.
+#### **Leave Requests**
 
-Leave Requests
-GET /api/leaves: Get all leave requests.
+- `GET /api/leaves`
+- `GET /api/leaves/:id`
+- `POST /api/leaves`
 
-GET /api/leaves/:id: Get leave request by ID.
-
-POST /api/leaves: Add a new leave request.
-
-Body (JSON):
-
+```json
 {
     "employee_id": 1,
     "leave_type": "Annual Leave",
@@ -261,20 +262,21 @@ Body (JSON):
     "end_date": "2025-09-05",
     "status": "pending"
 }
+```
 
-PUT /api/leaves/:id: Update a leave request.
+- `PUT /api/leaves/:id`
+- `DELETE /api/leaves/:id`
 
-DELETE /api/leaves/:id: Delete a leave request.
+---
 
-Future Enhancements (Optional)
-Integrate a dynamic frontend framework (e.g., React.js) for a more interactive single-page application experience.
+### **Future Enhancements (Optional)**
 
-Implement user authentication and authorization (login, user roles).
+- Use React.js for a dynamic SPA.
+- Implement authentication & user roles.
+- Add reporting and analytics.
+- Add performance review module.
+- File upload for employee documents.
+- Dynamic search, filter, and sort features.
 
-Add comprehensive reporting features.
+---
 
-Develop performance evaluation modules.
-
-Implement file upload capabilities for employee documents.
-
-Search, sort, and filter functionality for tables dynamically.
